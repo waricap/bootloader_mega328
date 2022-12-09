@@ -293,7 +293,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x840
+.text           0x00000000      0x810
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -388,31 +388,31 @@ END GROUP
  .text.__vector_11
                 0x000001aa       0x5a main.o
                 0x000001aa                __vector_11
- .text.main     0x00000204      0x474 main.o
+ .text.main     0x00000204      0x444 main.o
                 0x00000204                main
  .text.xMBRTUReceiveFSM
-                0x00000678       0x92 modbus/mbrtu.o
-                0x00000678                xMBRTUReceiveFSM
+                0x00000648       0x92 modbus/mbrtu.o
+                0x00000648                xMBRTUReceiveFSM
  .text.xMBRTUTransmitFSM
-                0x0000070a       0x6c modbus/mbrtu.o
-                0x0000070a                xMBRTUTransmitFSM
+                0x000006da       0x6c modbus/mbrtu.o
+                0x000006da                xMBRTUTransmitFSM
  .text.xMBRTUTimerT35Expired
-                0x00000776       0x3e modbus/mbrtu.o
-                0x00000776                xMBRTUTimerT35Expired
+                0x00000746       0x3e modbus/mbrtu.o
+                0x00000746                xMBRTUTimerT35Expired
  .text.xMBPortEventPost
-                0x000007b4        0xc modbus/portevent.o
-                0x000007b4                xMBPortEventPost
+                0x00000784        0xc modbus/portevent.o
+                0x00000784                xMBPortEventPost
  .text.vMBPortSerialEnable
-                0x000007c0       0x42 modbus/portserial.o
-                0x000007c0                vMBPortSerialEnable
+                0x00000790       0x42 modbus/portserial.o
+                0x00000790                vMBPortSerialEnable
  .text.vMBPortTimersEnable
-                0x00000802       0x3a modbus/porttimer.o
-                0x00000802                vMBPortTimersEnable
-                0x0000083c                . = ALIGN (0x2)
+                0x000007d2       0x3a modbus/porttimer.o
+                0x000007d2                vMBPortTimersEnable
+                0x0000080c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000083c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000083c                _exit
-                0x0000083c                exit
+ .fini9         0x0000080c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000080c                _exit
+                0x0000080c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -431,11 +431,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000083c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000080c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000840                _etext = .
+                0x00000810                _etext = .
 
-.data           0x00800100        0x2 load address 0x00000840
+.data           0x00800100        0x2 load address 0x00000810
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -489,8 +489,8 @@ END GROUP
  COMMON         0x0080021f      0x100 modbus/mbrtu.o
                 0x0080021f                ucRTUBuf
                 0x0080031f                PROVIDE (__bss_end, .)
-                0x00000840                __data_load_start = LOADADDR (.data)
-                0x00000842                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000810                __data_load_start = LOADADDR (.data)
+                0x00000812                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080031f        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -599,14 +599,14 @@ END GROUP
  .debug_abbrev  0x000008f2       0x71 modbus/portserial.o
  .debug_abbrev  0x00000963       0x62 modbus/porttimer.o
 
-.debug_line     0x00000000      0x989
+.debug_line     0x00000000      0x97d
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x3b8 main.o
- .debug_line    0x000004ec      0x261 modbus/mbrtu.o
- .debug_line    0x0000074d       0xa3 modbus/portevent.o
- .debug_line    0x000007f0       0xd6 modbus/portserial.o
- .debug_line    0x000008c6       0xc3 modbus/porttimer.o
+ .debug_line    0x00000134      0x3ac main.o
+ .debug_line    0x000004e0      0x261 modbus/mbrtu.o
+ .debug_line    0x00000741       0xa3 modbus/portevent.o
+ .debug_line    0x000007e4       0xd6 modbus/portserial.o
+ .debug_line    0x000008ba       0xc3 modbus/porttimer.o
 
 .debug_frame    0x00000000      0x2c8
  *(.debug_frame)

@@ -228,8 +228,8 @@ PORTC &= ~( 1<< 4);
 					if (page == usReg_HOLDING_Buf[2])
 					{
 						cli();		// отключаем прерывания
-							boot_page_erase(page);		// стереть память
-							boot_spm_busy_wait ();      // wait, пока память не будет стерта.
+//							boot_page_erase(page);		// стереть память
+//							boot_spm_busy_wait ();      // wait, пока память не будет стерта.
 							for (i=0; i<i_max_flash; i++) // SPM_PAGESIZE  128 байт  == 64 слова
 							{
 								address = i_max_flash*2*page + i*2;
