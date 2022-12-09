@@ -1,0 +1,36 @@
+https://www.microchip.com/content/dam/mchp/documents/MCU08/ApplicationNotes/ApplicationNotes/Basic-Bootloader-for-AVR-MCU-DA-Family-DS00003341C.pdf
+
+в проект  надо будет подключить  #include <avr/boot.h>
+В примере bootloader, который есть в этом файле<avr/boot.h>, 
+НЕ !!! надо использовать в коде С++ регистр     sreg = SREG;   это все работает в функциях  cli() sei()
+
+для записи bootloader:
+	в AtmelStudio 7.0, зайти в свойства проекта => Project Properties (Alt+F7) → Toolchain → AVR/GNU Linker → Memory Settings 
+	и добавить в сегмент FLASH ==>>   .text=0x3800
+	в результате в   Toolchain → AVR/GNU Linker → All Options: 
+	должна появиться запись опции  вида  ==>>  -Wl,--section-start=.text=0x7000
+
+
+не надо, только как вариант   1. преобразовать файл .hex  в  файл  .bin
+не надо, только как вариант   2. конвертер есть в утилите avr-objcopy.exe,   лежит в папке  C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin
+не надо, только как вариант   3. копируем этот .exe в нашу папку    ...\__name_project__\Debug\
+не надо, только как вариант   	в данном случае будет  E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Debug\avr-objcopy.exe
+не надо, только как вариант   4. запуск конвертора в PowerShell    ...\avr-objcopy.exe -I ihex -O binary ...\NAME.hex ...\NAME.bin
+не надо, только как вариант   	в данном случае будет полная команда будет выглядеть:
+не надо, только как вариант   	E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Debug\avr-objcopy.exe  -I ihex -O binary E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Debug\bootloader_mega328_mb485.hex E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Debug\bootloader_mega328_mb485.bin
+не надо, только как вариант   	E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Debug\avr-objcopy.exe  -I ihex -O binary E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Release\bootloader_mega328_mb485.hex E:\Project\mb485_16_mega328_US\bootloader_repository\bootloader_mega328_mb485\Release\bootloader_mega328_mb485.bin
+
+		У команды avr-objcopy  есть даже справочка по ключам :   -I ihex -O binary 
+		The options are:
+  	-I --input-target <bfdname>      Assume input file is in format <bfdname>
+  	-O --output-target <bfdname>     Create an output file in format <bfdname>
+		https://www.opennet.ru/docs/RUS/binutils/binutils-3.html
+		https://www.opennet.ru/man.shtml?topic=objcopy&category=1&russian=1
+
+5. Перед записью во флеш, надо выставить фьюз(ы) BOOTSZ => Boot Flash size =2048  стартовым адресом будет 0x3800
+5. Перед записью во флеш, надо выставить фьюз(ы) BOOTRST => галочку поставить, (ну или, нолик вшить)
+не надо, только как вариант   7. После этого записать файл.bin , но при этом указать адрес записи  0x3800 умножить на 2 ==> 0x7000
+	
+
+
+
