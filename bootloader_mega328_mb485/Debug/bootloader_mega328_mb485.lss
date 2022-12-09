@@ -609,8 +609,8 @@ PORTC &= ~( 1<< 4);
 				// ...
 				// usReg_HOLDING_Buf[67] =67;	// LW166
 				 //usReg_HOLDING_Buf[68] =68;	// LW167
-				 usReg_HOLDING_Buf[69] =1;	// это уже 65-е слово,  передается инфа, номер страницы +1, а на странице 64 WORD == 128 BYTE
- 3f6:	81 e0       	ldi	r24, 0x01	; 1
+				 usReg_HOLDING_Buf[69] =4;	// это уже 65-е слово,  передается инфа, номер страницы +1, а на странице 64 WORD == 128 BYTE
+ 3f6:	84 e0       	ldi	r24, 0x04	; 4
  3f8:	90 e0       	ldi	r25, 0x00	; 0
  3fa:	90 93 8d 01 	sts	0x018D, r25	; 0x80018d <__data_end+0x8b>
  3fe:	80 93 8c 01 	sts	0x018C, r24	; 0x80018c <__data_end+0x8a>

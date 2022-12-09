@@ -9,7 +9,11 @@ https://www.microchip.com/content/dam/mchp/documents/MCU08/ApplicationNotes/Appl
 	и добавить в сегмент FLASH ==>>   .text=0x3800
 	в результате в   Toolchain → AVR/GNU Linker → All Options: 
 	должна появиться запись опции  вида  ==>>  -Wl,--section-start=.text=0x7000
+!!!	при компиляции выставить конфигурацию  - Release  ( Debug - не прокатит )
 
+// =================================== 
+// 12800 байт пишется 950мсек, при тактовой  16 MHz
+// ==========================================================
 
 не надо, только как вариант   1. преобразовать файл .hex  в  файл  .bin
 не надо, только как вариант   2. конвертер есть в утилите avr-objcopy.exe,   лежит в папке  C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin
