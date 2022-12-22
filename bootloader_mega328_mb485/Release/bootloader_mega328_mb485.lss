@@ -3,23 +3,23 @@ bootloader_mega328_mb485.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  0000088a  2**0
+  0 .data         00000000  00800100  00800100  00000832  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000816  00007000  00007000  00000074  2**1
+  1 .text         000007be  00007000  00007000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000220  00800100  00800100  0000088a  2**0
+  2 .bss          00000220  00800100  00800100  00000832  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000088a  2**0
+  3 .comment      00000030  00000000  00000000  00000832  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008bc  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000864  2**2
                   CONTENTS, READONLY
-  5 .debug_info   000005f4  00000000  00000000  000008fc  2**0
+  5 .debug_info   000005f4  00000000  00000000  000008a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000005a2  00000000  00000000  00000ef0  2**0
+  6 .debug_abbrev 000005a2  00000000  00000000  00000e98  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000134  00000000  00000000  00001492  2**0
+  7 .debug_line   00000134  00000000  00000000  0000143a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    00000208  00000000  00000000  000015c6  2**0
+  8 .debug_str    00000208  00000000  00000000  0000156e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -74,7 +74,7 @@ Disassembly of section .text:
     7080:	b2 07       	cpc	r27, r18
     7082:	e1 f7       	brne	.-8      	; 0x707c <.do_clear_bss_loop>
     7084:	0e 94 bf 38 	call	0x717e	; 0x717e <main>
-    7088:	0c 94 09 3c 	jmp	0x7812	; 0x7812 <_exit>
+    7088:	0c 94 dd 3b 	jmp	0x77ba	; 0x77ba <_exit>
 
 0000708c <__bad_interrupt>:
     708c:	0c 94 00 38 	jmp	0x7000	; 0x7000 <__vectors>
@@ -110,7 +110,7 @@ Disassembly of section .text:
     70c2:	bf 93       	push	r27
     70c4:	ef 93       	push	r30
     70c6:	ff 93       	push	r31
-    70c8:	0e 94 62 3b 	call	0x76c4	; 0x76c4 <xMBRTUTransmitFSM>
+    70c8:	0e 94 36 3b 	call	0x766c	; 0x766c <xMBRTUTransmitFSM>
     70cc:	ff 91       	pop	r31
     70ce:	ef 91       	pop	r30
     70d0:	bf 91       	pop	r27
@@ -147,7 +147,7 @@ Disassembly of section .text:
     710a:	bf 93       	push	r27
     710c:	ef 93       	push	r30
     710e:	ff 93       	push	r31
-    7110:	0e 94 19 3b 	call	0x7632	; 0x7632 <xMBRTUReceiveFSM>
+    7110:	0e 94 ed 3a 	call	0x75da	; 0x75da <xMBRTUReceiveFSM>
     7114:	ff 91       	pop	r31
     7116:	ef 91       	pop	r30
     7118:	bf 91       	pop	r27
@@ -184,7 +184,7 @@ Disassembly of section .text:
     7152:	bf 93       	push	r27
     7154:	ef 93       	push	r30
     7156:	ff 93       	push	r31
-    7158:	0e 94 98 3b 	call	0x7730	; 0x7730 <xMBRTUTimerT35Expired>
+    7158:	0e 94 6c 3b 	call	0x76d8	; 0x76d8 <xMBRTUTimerT35Expired>
     715c:	ff 91       	pop	r31
     715e:	ef 91       	pop	r30
     7160:	bf 91       	pop	r27
@@ -211,706 +211,670 @@ Disassembly of section .text:
     7186:	85 bf       	out	0x35, r24	; 53
     7188:	78 94       	sei
     718a:	14 b8       	out	0x04, r1	; 4
-    718c:	8f ef       	ldi	r24, 0xFF	; 255
-    718e:	85 b9       	out	0x05, r24	; 5
-    7190:	87 b9       	out	0x07, r24	; 7
-    7192:	87 e0       	ldi	r24, 0x07	; 7
-    7194:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <ucMBAddress>
-    7198:	f8 94       	cli
-    719a:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
-    719e:	86 60       	ori	r24, 0x06	; 6
-    71a0:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
-    71a4:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
-    71a8:	82 60       	ori	r24, 0x02	; 2
-    71aa:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
-    71ae:	8f ec       	ldi	r24, 0xCF	; 207
-    71b0:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
-    71b4:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
-    71b8:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71bc:	80 61       	ori	r24, 0x10	; 16
-    71be:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71c2:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71c6:	8f 76       	andi	r24, 0x6F	; 111
-    71c8:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71cc:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71d0:	8f 7d       	andi	r24, 0xDF	; 223
-    71d2:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
-    71d6:	8f e1       	ldi	r24, 0x1F	; 31
-    71d8:	90 e0       	ldi	r25, 0x00	; 0
-    71da:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <usTimerOCRADelta+0x1>
-    71de:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <usTimerOCRADelta>
-    71e2:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
-    71e6:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
-    71ea:	10 92 82 00 	sts	0x0082, r1	; 0x800082 <__TEXT_REGION_LENGTH__+0x7f8082>
-    71ee:	80 91 81 00 	lds	r24, 0x0081	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
-    71f2:	8a 7f       	andi	r24, 0xFA	; 250
-    71f4:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
-    71f8:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <__TEXT_REGION_LENGTH__+0x7f806f>
-    71fc:	8d 7f       	andi	r24, 0xFD	; 253
-    71fe:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7f806f>
-    7202:	b1 9a       	sbi	0x16, 1	; 22
-    7204:	60 e0       	ldi	r22, 0x00	; 0
-    7206:	81 e0       	ldi	r24, 0x01	; 1
-    7208:	0e 94 cb 3b 	call	0x7796	; 0x7796 <vMBPortSerialEnable>
-    720c:	0e 94 ec 3b 	call	0x77d8	; 0x77d8 <vMBPortTimersEnable>
-    7210:	78 94       	sei
-    7212:	a8 95       	wdr
-    7214:	98 e2       	ldi	r25, 0x28	; 40
-    7216:	88 e1       	ldi	r24, 0x18	; 24
-    7218:	0f b6       	in	r0, 0x3f	; 63
-    721a:	f8 94       	cli
-    721c:	a8 95       	wdr
-    721e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
-    7222:	0f be       	out	0x3f, r0	; 63
-    7224:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
-    7228:	e3 e1       	ldi	r30, 0x13	; 19
-    722a:	f1 e0       	ldi	r31, 0x01	; 1
-    722c:	80 e0       	ldi	r24, 0x00	; 0
-    722e:	90 e0       	ldi	r25, 0x00	; 0
-    7230:	20 e0       	ldi	r18, 0x00	; 0
-    7232:	30 e0       	ldi	r19, 0x00	; 0
-    7234:	21 93       	st	Z+, r18
-    7236:	31 93       	st	Z+, r19
-    7238:	01 96       	adiw	r24, 0x01	; 1
-    723a:	2f 5f       	subi	r18, 0xFF	; 255
-    723c:	3e 4f       	sbci	r19, 0xFE	; 254
-    723e:	80 34       	cpi	r24, 0x40	; 64
-    7240:	91 05       	cpc	r25, r1
-    7242:	c1 f7       	brne	.-16     	; 0x7234 <main+0xb6>
-    7244:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
-    7248:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-    724c:	81 e0       	ldi	r24, 0x01	; 1
-    724e:	90 e0       	ldi	r25, 0x00	; 0
-    7250:	90 93 94 01 	sts	0x0194, r25	; 0x800194 <usReg_HOLDING_Buf+0x8b>
-    7254:	80 93 93 01 	sts	0x0193, r24	; 0x800193 <usReg_HOLDING_Buf+0x8a>
-    7258:	c1 e0       	ldi	r28, 0x01	; 1
-    725a:	d1 e1       	ldi	r29, 0x11	; 17
-    725c:	13 e0       	ldi	r17, 0x03	; 3
-    725e:	05 e0       	ldi	r16, 0x05	; 5
-    7260:	0e 94 f3 39 	call	0x73e6	; 0x73e6 <eMBPoll>
-    7264:	81 11       	cpse	r24, r1
-    7266:	fc cf       	rjmp	.-8      	; 0x7260 <main+0xe2>
-    7268:	a8 95       	wdr
-    726a:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <usReg_HOLDING_Buf+0x2>
-    726e:	90 91 0c 01 	lds	r25, 0x010C	; 0x80010c <usReg_HOLDING_Buf+0x3>
-    7272:	01 96       	adiw	r24, 0x01	; 1
-    7274:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <usReg_HOLDING_Buf+0x3>
-    7278:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <usReg_HOLDING_Buf+0x2>
-    727c:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <usReg_HOLDING_Buf+0xa>
-    7280:	90 91 14 01 	lds	r25, 0x0114	; 0x800114 <usReg_HOLDING_Buf+0xb>
-    7284:	90 93 10 01 	sts	0x0110, r25	; 0x800110 <usReg_HOLDING_Buf+0x7>
-    7288:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <usReg_HOLDING_Buf+0x6>
-    728c:	e3 e1       	ldi	r30, 0x13	; 19
-    728e:	f1 e0       	ldi	r31, 0x01	; 1
-    7290:	85 e0       	ldi	r24, 0x05	; 5
-    7292:	90 e0       	ldi	r25, 0x00	; 0
-    7294:	88 34       	cpi	r24, 0x48	; 72
+    718c:	9f ef       	ldi	r25, 0xFF	; 255
+    718e:	95 b9       	out	0x05, r25	; 5
+    7190:	97 b9       	out	0x07, r25	; 7
+    7192:	3b 9a       	sbi	0x07, 3	; 7
+    7194:	43 98       	cbi	0x08, 3	; 8
+    7196:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <ucMBAddress>
+    719a:	f8 94       	cli
+    719c:	80 91 c2 00 	lds	r24, 0x00C2	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+    71a0:	86 60       	ori	r24, 0x06	; 6
+    71a2:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+    71a6:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    71aa:	82 60       	ori	r24, 0x02	; 2
+    71ac:	80 93 c0 00 	sts	0x00C0, r24	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+    71b0:	8f ec       	ldi	r24, 0xCF	; 207
+    71b2:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+    71b6:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+    71ba:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71be:	80 61       	ori	r24, 0x10	; 16
+    71c0:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71c4:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71c8:	8f 76       	andi	r24, 0x6F	; 111
+    71ca:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71ce:	80 91 c1 00 	lds	r24, 0x00C1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71d2:	8f 7d       	andi	r24, 0xDF	; 223
+    71d4:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+    71d8:	8f e1       	ldi	r24, 0x1F	; 31
+    71da:	90 e0       	ldi	r25, 0x00	; 0
+    71dc:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <usTimerOCRADelta+0x1>
+    71e0:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <usTimerOCRADelta>
+    71e4:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+    71e8:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+    71ec:	10 92 82 00 	sts	0x0082, r1	; 0x800082 <__TEXT_REGION_LENGTH__+0x7f8082>
+    71f0:	80 91 81 00 	lds	r24, 0x0081	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+    71f4:	8a 7f       	andi	r24, 0xFA	; 250
+    71f6:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+    71fa:	80 91 6f 00 	lds	r24, 0x006F	; 0x80006f <__TEXT_REGION_LENGTH__+0x7f806f>
+    71fe:	8d 7f       	andi	r24, 0xFD	; 253
+    7200:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7f806f>
+    7204:	b1 9a       	sbi	0x16, 1	; 22
+    7206:	60 e0       	ldi	r22, 0x00	; 0
+    7208:	81 e0       	ldi	r24, 0x01	; 1
+    720a:	0e 94 9f 3b 	call	0x773e	; 0x773e <vMBPortSerialEnable>
+    720e:	0e 94 c0 3b 	call	0x7780	; 0x7780 <vMBPortTimersEnable>
+    7212:	78 94       	sei
+    7214:	a8 95       	wdr
+    7216:	98 e2       	ldi	r25, 0x28	; 40
+    7218:	88 e1       	ldi	r24, 0x18	; 24
+    721a:	0f b6       	in	r0, 0x3f	; 63
+    721c:	f8 94       	cli
+    721e:	a8 95       	wdr
+    7220:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+    7224:	0f be       	out	0x3f, r0	; 63
+    7226:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+    722a:	ff 24       	eor	r15, r15
+    722c:	f3 94       	inc	r15
+    722e:	31 e1       	ldi	r19, 0x11	; 17
+    7230:	e3 2e       	mov	r14, r19
+    7232:	c0 e0       	ldi	r28, 0x00	; 0
+    7234:	d0 e7       	ldi	r29, 0x70	; 112
+    7236:	01 e0       	ldi	r16, 0x01	; 1
+    7238:	10 e0       	ldi	r17, 0x00	; 0
+    723a:	0e 94 c7 39 	call	0x738e	; 0x738e <eMBPoll>
+    723e:	81 11       	cpse	r24, r1
+    7240:	fc cf       	rjmp	.-8      	; 0x723a <main+0xbc>
+    7242:	a8 95       	wdr
+    7244:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <usReg_HOLDING_Buf+0x2>
+    7248:	90 91 0c 01 	lds	r25, 0x010C	; 0x80010c <usReg_HOLDING_Buf+0x3>
+    724c:	01 96       	adiw	r24, 0x01	; 1
+    724e:	90 93 0c 01 	sts	0x010C, r25	; 0x80010c <usReg_HOLDING_Buf+0x3>
+    7252:	80 93 0b 01 	sts	0x010B, r24	; 0x80010b <usReg_HOLDING_Buf+0x2>
+    7256:	d0 93 10 01 	sts	0x0110, r29	; 0x800110 <usReg_HOLDING_Buf+0x7>
+    725a:	c0 93 0f 01 	sts	0x010F, r28	; 0x80010f <usReg_HOLDING_Buf+0x6>
+    725e:	10 93 12 01 	sts	0x0112, r17	; 0x800112 <usReg_HOLDING_Buf+0x9>
+    7262:	00 93 11 01 	sts	0x0111, r16	; 0x800111 <usReg_HOLDING_Buf+0x8>
+    7266:	80 91 93 01 	lds	r24, 0x0193	; 0x800193 <usReg_HOLDING_Buf+0x8a>
+    726a:	90 91 94 01 	lds	r25, 0x0194	; 0x800194 <usReg_HOLDING_Buf+0x8b>
+    726e:	31 e0       	ldi	r19, 0x01	; 1
+    7270:	1c 9b       	sbis	0x03, 4	; 3
+    7272:	30 e0       	ldi	r19, 0x00	; 0
+    7274:	21 e0       	ldi	r18, 0x01	; 1
+    7276:	00 97       	sbiw	r24, 0x00	; 0
+    7278:	09 f0       	breq	.+2      	; 0x727c <main+0xfe>
+    727a:	20 e0       	ldi	r18, 0x00	; 0
+    727c:	23 23       	and	r18, r19
+    727e:	21 f4       	brne	.+8      	; 0x7288 <main+0x10a>
+    7280:	8f 3f       	cpi	r24, 0xFF	; 255
+    7282:	2f e0       	ldi	r18, 0x0F	; 15
+    7284:	92 07       	cpc	r25, r18
+    7286:	28 f0       	brcs	.+10     	; 0x7292 <main+0x114>
+    7288:	e0 92 57 00 	sts	0x0057, r14	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
+    728c:	e8 95       	spm
+    728e:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+    7292:	01 97       	sbiw	r24, 0x01	; 1
+    7294:	81 3e       	cpi	r24, 0xE1	; 225
     7296:	91 05       	cpc	r25, r1
-    7298:	51 f0       	breq	.+20     	; 0x72ae <main+0x130>
-    729a:	21 91       	ld	r18, Z+
-    729c:	31 91       	ld	r19, Z+
-    729e:	23 2b       	or	r18, r19
-    72a0:	21 f0       	breq	.+8      	; 0x72aa <main+0x12c>
-    72a2:	90 93 12 01 	sts	0x0112, r25	; 0x800112 <usReg_HOLDING_Buf+0x9>
-    72a6:	80 93 11 01 	sts	0x0111, r24	; 0x800111 <usReg_HOLDING_Buf+0x8>
-    72aa:	01 96       	adiw	r24, 0x01	; 1
-    72ac:	f3 cf       	rjmp	.-26     	; 0x7294 <main+0x116>
-    72ae:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
-    72b2:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-    72b6:	80 91 93 01 	lds	r24, 0x0193	; 0x800193 <usReg_HOLDING_Buf+0x8a>
-    72ba:	90 91 94 01 	lds	r25, 0x0194	; 0x800194 <usReg_HOLDING_Buf+0x8b>
-    72be:	31 e0       	ldi	r19, 0x01	; 1
-    72c0:	1c 9b       	sbis	0x03, 4	; 3
-    72c2:	30 e0       	ldi	r19, 0x00	; 0
-    72c4:	21 e0       	ldi	r18, 0x01	; 1
-    72c6:	00 97       	sbiw	r24, 0x00	; 0
-    72c8:	09 f0       	breq	.+2      	; 0x72cc <main+0x14e>
-    72ca:	20 e0       	ldi	r18, 0x00	; 0
-    72cc:	23 23       	and	r18, r19
-    72ce:	21 f4       	brne	.+8      	; 0x72d8 <main+0x15a>
-    72d0:	8f 3f       	cpi	r24, 0xFF	; 255
-    72d2:	2f e0       	ldi	r18, 0x0F	; 15
-    72d4:	92 07       	cpc	r25, r18
-    72d6:	28 f0       	brcs	.+10     	; 0x72e2 <main+0x164>
-    72d8:	d0 93 57 00 	sts	0x0057, r29	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
-    72dc:	e8 95       	spm
-    72de:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
-    72e2:	00 97       	sbiw	r24, 0x00	; 0
-    72e4:	09 f4       	brne	.+2      	; 0x72e8 <main+0x16a>
-    72e6:	bc cf       	rjmp	.-136    	; 0x7260 <main+0xe2>
-    72e8:	01 97       	sbiw	r24, 0x01	; 1
-    72ea:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <page+0x1>
-    72ee:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <page>
-    72f2:	20 91 0d 01 	lds	r18, 0x010D	; 0x80010d <usReg_HOLDING_Buf+0x4>
-    72f6:	30 91 0e 01 	lds	r19, 0x010E	; 0x80010e <usReg_HOLDING_Buf+0x5>
-    72fa:	82 17       	cp	r24, r18
-    72fc:	93 07       	cpc	r25, r19
-    72fe:	09 f0       	breq	.+2      	; 0x7302 <main+0x184>
-    7300:	af cf       	rjmp	.-162    	; 0x7260 <main+0xe2>
-    7302:	96 95       	lsr	r25
-    7304:	98 2f       	mov	r25, r24
-    7306:	88 27       	eor	r24, r24
-    7308:	97 95       	ror	r25
-    730a:	87 95       	ror	r24
-    730c:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <adr8_page+0x1>
-    7310:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <adr8_page>
-    7314:	f8 94       	cli
-    7316:	20 91 04 01 	lds	r18, 0x0104	; 0x800104 <adr8_page>
-    731a:	30 91 05 01 	lds	r19, 0x0105	; 0x800105 <adr8_page+0x1>
-    731e:	f9 01       	movw	r30, r18
-    7320:	10 93 57 00 	sts	0x0057, r17	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
-    7324:	e8 95       	spm
-    7326:	07 b6       	in	r0, 0x37	; 55
-    7328:	00 fc       	sbrc	r0, 0
-    732a:	fd cf       	rjmp	.-6      	; 0x7326 <main+0x1a8>
-    732c:	a9 e0       	ldi	r26, 0x09	; 9
-    732e:	b1 e0       	ldi	r27, 0x01	; 1
-    7330:	80 e0       	ldi	r24, 0x00	; 0
-    7332:	90 e0       	ldi	r25, 0x00	; 0
-    7334:	b9 01       	movw	r22, r18
-    7336:	69 50       	subi	r22, 0x09	; 9
-    7338:	71 40       	sbci	r23, 0x01	; 1
-    733a:	fb 01       	movw	r30, r22
-    733c:	ea 0f       	add	r30, r26
-    733e:	fb 1f       	adc	r31, r27
-    7340:	1a 96       	adiw	r26, 0x0a	; 10
-    7342:	4d 91       	ld	r20, X+
-    7344:	5c 91       	ld	r21, X
-    7346:	1b 97       	sbiw	r26, 0x0b	; 11
-    7348:	0a 01       	movw	r0, r20
-    734a:	c0 93 57 00 	sts	0x0057, r28	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
-    734e:	e8 95       	spm
-    7350:	11 24       	eor	r1, r1
-    7352:	01 96       	adiw	r24, 0x01	; 1
-    7354:	12 96       	adiw	r26, 0x02	; 2
-    7356:	80 34       	cpi	r24, 0x40	; 64
-    7358:	91 05       	cpc	r25, r1
-    735a:	79 f7       	brne	.-34     	; 0x733a <main+0x1bc>
-    735c:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
-    7360:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-    7364:	f9 01       	movw	r30, r18
-    7366:	00 93 57 00 	sts	0x0057, r16	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
-    736a:	e8 95       	spm
-    736c:	07 b6       	in	r0, 0x37	; 55
-    736e:	00 fc       	sbrc	r0, 0
-    7370:	fd cf       	rjmp	.-6      	; 0x736c <main+0x1ee>
-    7372:	78 94       	sei
-    7374:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <page>
-    7378:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <page+0x1>
-    737c:	01 96       	adiw	r24, 0x01	; 1
-    737e:	90 93 0e 01 	sts	0x010E, r25	; 0x80010e <usReg_HOLDING_Buf+0x5>
-    7382:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <usReg_HOLDING_Buf+0x4>
-    7386:	43 99       	sbic	0x08, 3	; 8
-    7388:	6b cf       	rjmp	.-298    	; 0x7260 <main+0xe2>
-    738a:	98 b1       	in	r25, 0x08	; 8
-    738c:	80 e1       	ldi	r24, 0x10	; 16
-    738e:	89 27       	eor	r24, r25
-    7390:	88 b9       	out	0x08, r24	; 8
-    7392:	64 cf       	rjmp	.-312    	; 0x725c <main+0xde>
+    7298:	80 f6       	brcc	.-96     	; 0x723a <main+0xbc>
+    729a:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <page+0x1>
+    729e:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <page>
+    72a2:	20 91 0d 01 	lds	r18, 0x010D	; 0x80010d <usReg_HOLDING_Buf+0x4>
+    72a6:	30 91 0e 01 	lds	r19, 0x010E	; 0x80010e <usReg_HOLDING_Buf+0x5>
+    72aa:	82 17       	cp	r24, r18
+    72ac:	93 07       	cpc	r25, r19
+    72ae:	09 f0       	breq	.+2      	; 0x72b2 <main+0x134>
+    72b0:	c4 cf       	rjmp	.-120    	; 0x723a <main+0xbc>
+    72b2:	96 95       	lsr	r25
+    72b4:	98 2f       	mov	r25, r24
+    72b6:	88 27       	eor	r24, r24
+    72b8:	97 95       	ror	r25
+    72ba:	87 95       	ror	r24
+    72bc:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <adr8_page+0x1>
+    72c0:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <adr8_page>
+    72c4:	f8 94       	cli
+    72c6:	20 91 04 01 	lds	r18, 0x0104	; 0x800104 <adr8_page>
+    72ca:	30 91 05 01 	lds	r19, 0x0105	; 0x800105 <adr8_page+0x1>
+    72ce:	83 e0       	ldi	r24, 0x03	; 3
+    72d0:	f9 01       	movw	r30, r18
+    72d2:	80 93 57 00 	sts	0x0057, r24	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
+    72d6:	e8 95       	spm
+    72d8:	07 b6       	in	r0, 0x37	; 55
+    72da:	00 fc       	sbrc	r0, 0
+    72dc:	fd cf       	rjmp	.-6      	; 0x72d8 <main+0x15a>
+    72de:	a9 e0       	ldi	r26, 0x09	; 9
+    72e0:	b1 e0       	ldi	r27, 0x01	; 1
+    72e2:	80 e0       	ldi	r24, 0x00	; 0
+    72e4:	90 e0       	ldi	r25, 0x00	; 0
+    72e6:	b9 01       	movw	r22, r18
+    72e8:	69 50       	subi	r22, 0x09	; 9
+    72ea:	71 40       	sbci	r23, 0x01	; 1
+    72ec:	fb 01       	movw	r30, r22
+    72ee:	ea 0f       	add	r30, r26
+    72f0:	fb 1f       	adc	r31, r27
+    72f2:	1a 96       	adiw	r26, 0x0a	; 10
+    72f4:	4d 91       	ld	r20, X+
+    72f6:	5c 91       	ld	r21, X
+    72f8:	1b 97       	sbiw	r26, 0x0b	; 11
+    72fa:	0a 01       	movw	r0, r20
+    72fc:	f0 92 57 00 	sts	0x0057, r15	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
+    7300:	e8 95       	spm
+    7302:	11 24       	eor	r1, r1
+    7304:	01 96       	adiw	r24, 0x01	; 1
+    7306:	12 96       	adiw	r26, 0x02	; 2
+    7308:	80 34       	cpi	r24, 0x40	; 64
+    730a:	91 05       	cpc	r25, r1
+    730c:	79 f7       	brne	.-34     	; 0x72ec <main+0x16e>
+    730e:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    7312:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+    7316:	85 e0       	ldi	r24, 0x05	; 5
+    7318:	f9 01       	movw	r30, r18
+    731a:	80 93 57 00 	sts	0x0057, r24	; 0x800057 <__TEXT_REGION_LENGTH__+0x7f8057>
+    731e:	e8 95       	spm
+    7320:	07 b6       	in	r0, 0x37	; 55
+    7322:	00 fc       	sbrc	r0, 0
+    7324:	fd cf       	rjmp	.-6      	; 0x7320 <main+0x1a2>
+    7326:	78 94       	sei
+    7328:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <page>
+    732c:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <page+0x1>
+    7330:	01 96       	adiw	r24, 0x01	; 1
+    7332:	90 93 0e 01 	sts	0x010E, r25	; 0x80010e <usReg_HOLDING_Buf+0x5>
+    7336:	80 93 0d 01 	sts	0x010D, r24	; 0x80010d <usReg_HOLDING_Buf+0x4>
+    733a:	7f cf       	rjmp	.-258    	; 0x723a <main+0xbc>
 
-00007394 <eMBRegHoldingCB>:
-    7394:	dc 01       	movw	r26, r24
-    7396:	66 0f       	add	r22, r22
-    7398:	77 1f       	adc	r23, r23
-    739a:	fb 01       	movw	r30, r22
-    739c:	e7 5f       	subi	r30, 0xF7	; 247
-    739e:	fe 4f       	sbci	r31, 0xFE	; 254
-    73a0:	41 15       	cp	r20, r1
-    73a2:	51 05       	cpc	r21, r1
-    73a4:	f1 f0       	breq	.+60     	; 0x73e2 <eMBRegHoldingCB+0x4e>
-    73a6:	21 11       	cpse	r18, r1
-    73a8:	08 c0       	rjmp	.+16     	; 0x73ba <eMBRegHoldingCB+0x26>
-    73aa:	81 81       	ldd	r24, Z+1	; 0x01
-    73ac:	8c 93       	st	X, r24
-    73ae:	80 81       	ld	r24, Z
-    73b0:	11 96       	adiw	r26, 0x01	; 1
-    73b2:	8c 93       	st	X, r24
-    73b4:	11 97       	sbiw	r26, 0x01	; 1
-    73b6:	12 96       	adiw	r26, 0x02	; 2
-    73b8:	10 c0       	rjmp	.+32     	; 0x73da <eMBRegHoldingCB+0x46>
-    73ba:	21 30       	cpi	r18, 0x01	; 1
-    73bc:	71 f4       	brne	.+28     	; 0x73da <eMBRegHoldingCB+0x46>
-    73be:	8c 91       	ld	r24, X
-    73c0:	90 e0       	ldi	r25, 0x00	; 0
-    73c2:	98 2f       	mov	r25, r24
-    73c4:	88 27       	eor	r24, r24
-    73c6:	91 83       	std	Z+1, r25	; 0x01
-    73c8:	80 83       	st	Z, r24
-    73ca:	11 96       	adiw	r26, 0x01	; 1
-    73cc:	3c 91       	ld	r19, X
-    73ce:	11 97       	sbiw	r26, 0x01	; 1
-    73d0:	83 0f       	add	r24, r19
-    73d2:	91 1d       	adc	r25, r1
-    73d4:	91 83       	std	Z+1, r25	; 0x01
-    73d6:	80 83       	st	Z, r24
-    73d8:	12 96       	adiw	r26, 0x02	; 2
-    73da:	41 50       	subi	r20, 0x01	; 1
-    73dc:	51 09       	sbc	r21, r1
-    73de:	32 96       	adiw	r30, 0x02	; 2
-    73e0:	df cf       	rjmp	.-66     	; 0x73a0 <eMBRegHoldingCB+0xc>
-    73e2:	80 e0       	ldi	r24, 0x00	; 0
-    73e4:	08 95       	ret
+0000733c <eMBRegHoldingCB>:
+    733c:	dc 01       	movw	r26, r24
+    733e:	66 0f       	add	r22, r22
+    7340:	77 1f       	adc	r23, r23
+    7342:	fb 01       	movw	r30, r22
+    7344:	e7 5f       	subi	r30, 0xF7	; 247
+    7346:	fe 4f       	sbci	r31, 0xFE	; 254
+    7348:	41 15       	cp	r20, r1
+    734a:	51 05       	cpc	r21, r1
+    734c:	f1 f0       	breq	.+60     	; 0x738a <eMBRegHoldingCB+0x4e>
+    734e:	21 11       	cpse	r18, r1
+    7350:	08 c0       	rjmp	.+16     	; 0x7362 <eMBRegHoldingCB+0x26>
+    7352:	81 81       	ldd	r24, Z+1	; 0x01
+    7354:	8c 93       	st	X, r24
+    7356:	80 81       	ld	r24, Z
+    7358:	11 96       	adiw	r26, 0x01	; 1
+    735a:	8c 93       	st	X, r24
+    735c:	11 97       	sbiw	r26, 0x01	; 1
+    735e:	12 96       	adiw	r26, 0x02	; 2
+    7360:	10 c0       	rjmp	.+32     	; 0x7382 <eMBRegHoldingCB+0x46>
+    7362:	21 30       	cpi	r18, 0x01	; 1
+    7364:	71 f4       	brne	.+28     	; 0x7382 <eMBRegHoldingCB+0x46>
+    7366:	8c 91       	ld	r24, X
+    7368:	90 e0       	ldi	r25, 0x00	; 0
+    736a:	98 2f       	mov	r25, r24
+    736c:	88 27       	eor	r24, r24
+    736e:	91 83       	std	Z+1, r25	; 0x01
+    7370:	80 83       	st	Z, r24
+    7372:	11 96       	adiw	r26, 0x01	; 1
+    7374:	3c 91       	ld	r19, X
+    7376:	11 97       	sbiw	r26, 0x01	; 1
+    7378:	83 0f       	add	r24, r19
+    737a:	91 1d       	adc	r25, r1
+    737c:	91 83       	std	Z+1, r25	; 0x01
+    737e:	80 83       	st	Z, r24
+    7380:	12 96       	adiw	r26, 0x02	; 2
+    7382:	41 50       	subi	r20, 0x01	; 1
+    7384:	51 09       	sbc	r21, r1
+    7386:	32 96       	adiw	r30, 0x02	; 2
+    7388:	df cf       	rjmp	.-66     	; 0x7348 <eMBRegHoldingCB+0xc>
+    738a:	80 e0       	ldi	r24, 0x00	; 0
+    738c:	08 95       	ret
 
-000073e6 <eMBPoll>:
-    73e6:	1f 93       	push	r17
-    73e8:	cf 93       	push	r28
-    73ea:	df 93       	push	r29
-    73ec:	1f 92       	push	r1
-    73ee:	cd b7       	in	r28, 0x3d	; 61
-    73f0:	de b7       	in	r29, 0x3e	; 62
-    73f2:	ce 01       	movw	r24, r28
-    73f4:	01 96       	adiw	r24, 0x01	; 1
-    73f6:	0e 94 bd 3b 	call	0x777a	; 0x777a <xMBPortEventGet>
-    73fa:	89 81       	ldd	r24, Y+1	; 0x01
-    73fc:	81 30       	cpi	r24, 0x01	; 1
-    73fe:	19 f0       	breq	.+6      	; 0x7406 <eMBPoll+0x20>
-    7400:	82 30       	cpi	r24, 0x02	; 2
-    7402:	d1 f0       	breq	.+52     	; 0x7438 <eMBPoll+0x52>
-    7404:	3b c0       	rjmp	.+118    	; 0x747c <eMBPoll+0x96>
-    7406:	41 e1       	ldi	r20, 0x11	; 17
-    7408:	52 e0       	ldi	r21, 0x02	; 2
-    740a:	63 e1       	ldi	r22, 0x13	; 19
-    740c:	72 e0       	ldi	r23, 0x02	; 2
-    740e:	85 e1       	ldi	r24, 0x15	; 21
-    7410:	92 e0       	ldi	r25, 0x02	; 2
-    7412:	0e 94 93 3a 	call	0x7526	; 0x7526 <eMBRTUReceive>
-    7416:	18 2f       	mov	r17, r24
-    7418:	91 e0       	ldi	r25, 0x01	; 1
-    741a:	20 91 15 02 	lds	r18, 0x0215	; 0x800215 <ucRcvAddress.1983>
-    741e:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <ucMBAddress>
-    7422:	28 13       	cpse	r18, r24
-    7424:	90 e0       	ldi	r25, 0x00	; 0
-    7426:	81 e0       	ldi	r24, 0x01	; 1
-    7428:	11 11       	cpse	r17, r1
-    742a:	80 e0       	ldi	r24, 0x00	; 0
-    742c:	89 23       	and	r24, r25
-    742e:	39 f1       	breq	.+78     	; 0x747e <eMBPoll+0x98>
-    7430:	82 e0       	ldi	r24, 0x02	; 2
-    7432:	0e 94 b7 3b 	call	0x776e	; 0x776e <xMBPortEventPost>
-    7436:	23 c0       	rjmp	.+70     	; 0x747e <eMBPoll+0x98>
-    7438:	e0 91 13 02 	lds	r30, 0x0213	; 0x800213 <ucMBFrame.1982>
-    743c:	f0 91 14 02 	lds	r31, 0x0214	; 0x800214 <ucMBFrame.1982+0x1>
-    7440:	90 81       	ld	r25, Z
-    7442:	93 30       	cpi	r25, 0x03	; 3
-    7444:	31 f4       	brne	.+12     	; 0x7452 <eMBPoll+0x6c>
-    7446:	61 e1       	ldi	r22, 0x11	; 17
-    7448:	72 e0       	ldi	r23, 0x02	; 2
-    744a:	cf 01       	movw	r24, r30
-    744c:	0e 94 7b 3a 	call	0x74f6	; 0x74f6 <eMBFuncReadHoldingRegister>
-    7450:	07 c0       	rjmp	.+14     	; 0x7460 <eMBPoll+0x7a>
-    7452:	90 31       	cpi	r25, 0x10	; 16
-    7454:	29 f4       	brne	.+10     	; 0x7460 <eMBPoll+0x7a>
-    7456:	61 e1       	ldi	r22, 0x11	; 17
-    7458:	72 e0       	ldi	r23, 0x02	; 2
-    745a:	cf 01       	movw	r24, r30
-    745c:	0e 94 66 3a 	call	0x74cc	; 0x74cc <eMBFuncWriteMultipleHoldingRegister>
-    7460:	40 91 11 02 	lds	r20, 0x0211	; 0x800211 <usLength.1984>
-    7464:	50 91 12 02 	lds	r21, 0x0212	; 0x800212 <usLength.1984+0x1>
-    7468:	60 91 13 02 	lds	r22, 0x0213	; 0x800213 <ucMBFrame.1982>
-    746c:	70 91 14 02 	lds	r23, 0x0214	; 0x800214 <ucMBFrame.1982+0x1>
-    7470:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <ucMBAddress>
-    7474:	0e 94 cb 3a 	call	0x7596	; 0x7596 <eMBRTUSend>
-    7478:	18 2f       	mov	r17, r24
-    747a:	01 c0       	rjmp	.+2      	; 0x747e <eMBPoll+0x98>
-    747c:	17 e0       	ldi	r17, 0x07	; 7
-    747e:	81 2f       	mov	r24, r17
-    7480:	0f 90       	pop	r0
-    7482:	df 91       	pop	r29
-    7484:	cf 91       	pop	r28
-    7486:	1f 91       	pop	r17
-    7488:	08 95       	ret
+0000738e <eMBPoll>:
+    738e:	1f 93       	push	r17
+    7390:	cf 93       	push	r28
+    7392:	df 93       	push	r29
+    7394:	1f 92       	push	r1
+    7396:	cd b7       	in	r28, 0x3d	; 61
+    7398:	de b7       	in	r29, 0x3e	; 62
+    739a:	ce 01       	movw	r24, r28
+    739c:	01 96       	adiw	r24, 0x01	; 1
+    739e:	0e 94 91 3b 	call	0x7722	; 0x7722 <xMBPortEventGet>
+    73a2:	89 81       	ldd	r24, Y+1	; 0x01
+    73a4:	81 30       	cpi	r24, 0x01	; 1
+    73a6:	19 f0       	breq	.+6      	; 0x73ae <eMBPoll+0x20>
+    73a8:	82 30       	cpi	r24, 0x02	; 2
+    73aa:	d1 f0       	breq	.+52     	; 0x73e0 <eMBPoll+0x52>
+    73ac:	3b c0       	rjmp	.+118    	; 0x7424 <eMBPoll+0x96>
+    73ae:	41 e1       	ldi	r20, 0x11	; 17
+    73b0:	52 e0       	ldi	r21, 0x02	; 2
+    73b2:	63 e1       	ldi	r22, 0x13	; 19
+    73b4:	72 e0       	ldi	r23, 0x02	; 2
+    73b6:	85 e1       	ldi	r24, 0x15	; 21
+    73b8:	92 e0       	ldi	r25, 0x02	; 2
+    73ba:	0e 94 67 3a 	call	0x74ce	; 0x74ce <eMBRTUReceive>
+    73be:	18 2f       	mov	r17, r24
+    73c0:	91 e0       	ldi	r25, 0x01	; 1
+    73c2:	20 91 15 02 	lds	r18, 0x0215	; 0x800215 <ucRcvAddress.1983>
+    73c6:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <ucMBAddress>
+    73ca:	28 13       	cpse	r18, r24
+    73cc:	90 e0       	ldi	r25, 0x00	; 0
+    73ce:	81 e0       	ldi	r24, 0x01	; 1
+    73d0:	11 11       	cpse	r17, r1
+    73d2:	80 e0       	ldi	r24, 0x00	; 0
+    73d4:	89 23       	and	r24, r25
+    73d6:	39 f1       	breq	.+78     	; 0x7426 <eMBPoll+0x98>
+    73d8:	82 e0       	ldi	r24, 0x02	; 2
+    73da:	0e 94 8b 3b 	call	0x7716	; 0x7716 <xMBPortEventPost>
+    73de:	23 c0       	rjmp	.+70     	; 0x7426 <eMBPoll+0x98>
+    73e0:	e0 91 13 02 	lds	r30, 0x0213	; 0x800213 <ucMBFrame.1982>
+    73e4:	f0 91 14 02 	lds	r31, 0x0214	; 0x800214 <ucMBFrame.1982+0x1>
+    73e8:	90 81       	ld	r25, Z
+    73ea:	93 30       	cpi	r25, 0x03	; 3
+    73ec:	31 f4       	brne	.+12     	; 0x73fa <eMBPoll+0x6c>
+    73ee:	61 e1       	ldi	r22, 0x11	; 17
+    73f0:	72 e0       	ldi	r23, 0x02	; 2
+    73f2:	cf 01       	movw	r24, r30
+    73f4:	0e 94 4f 3a 	call	0x749e	; 0x749e <eMBFuncReadHoldingRegister>
+    73f8:	07 c0       	rjmp	.+14     	; 0x7408 <eMBPoll+0x7a>
+    73fa:	90 31       	cpi	r25, 0x10	; 16
+    73fc:	29 f4       	brne	.+10     	; 0x7408 <eMBPoll+0x7a>
+    73fe:	61 e1       	ldi	r22, 0x11	; 17
+    7400:	72 e0       	ldi	r23, 0x02	; 2
+    7402:	cf 01       	movw	r24, r30
+    7404:	0e 94 3a 3a 	call	0x7474	; 0x7474 <eMBFuncWriteMultipleHoldingRegister>
+    7408:	40 91 11 02 	lds	r20, 0x0211	; 0x800211 <usLength.1984>
+    740c:	50 91 12 02 	lds	r21, 0x0212	; 0x800212 <usLength.1984+0x1>
+    7410:	60 91 13 02 	lds	r22, 0x0213	; 0x800213 <ucMBFrame.1982>
+    7414:	70 91 14 02 	lds	r23, 0x0214	; 0x800214 <ucMBFrame.1982+0x1>
+    7418:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <ucMBAddress>
+    741c:	0e 94 9f 3a 	call	0x753e	; 0x753e <eMBRTUSend>
+    7420:	18 2f       	mov	r17, r24
+    7422:	01 c0       	rjmp	.+2      	; 0x7426 <eMBPoll+0x98>
+    7424:	17 e0       	ldi	r17, 0x07	; 7
+    7426:	81 2f       	mov	r24, r17
+    7428:	0f 90       	pop	r0
+    742a:	df 91       	pop	r29
+    742c:	cf 91       	pop	r28
+    742e:	1f 91       	pop	r17
+    7430:	08 95       	ret
 
-0000748a <usMBCRC16>:
-    748a:	dc 01       	movw	r26, r24
-    748c:	40 e0       	ldi	r20, 0x00	; 0
-    748e:	50 e0       	ldi	r21, 0x00	; 0
-    7490:	8f ef       	ldi	r24, 0xFF	; 255
-    7492:	9f ef       	ldi	r25, 0xFF	; 255
-    7494:	17 c0       	rjmp	.+46     	; 0x74c4 <usMBCRC16+0x3a>
-    7496:	fd 01       	movw	r30, r26
-    7498:	e4 0f       	add	r30, r20
-    749a:	f5 1f       	adc	r31, r21
-    749c:	20 81       	ld	r18, Z
-    749e:	82 27       	eor	r24, r18
-    74a0:	20 e0       	ldi	r18, 0x00	; 0
-    74a2:	0c c0       	rjmp	.+24     	; 0x74bc <usMBCRC16+0x32>
-    74a4:	80 ff       	sbrs	r24, 0
-    74a6:	07 c0       	rjmp	.+14     	; 0x74b6 <usMBCRC16+0x2c>
-    74a8:	96 95       	lsr	r25
-    74aa:	87 95       	ror	r24
-    74ac:	31 e0       	ldi	r19, 0x01	; 1
-    74ae:	83 27       	eor	r24, r19
-    74b0:	30 ea       	ldi	r19, 0xA0	; 160
-    74b2:	93 27       	eor	r25, r19
-    74b4:	02 c0       	rjmp	.+4      	; 0x74ba <usMBCRC16+0x30>
-    74b6:	96 95       	lsr	r25
-    74b8:	87 95       	ror	r24
-    74ba:	2f 5f       	subi	r18, 0xFF	; 255
-    74bc:	28 30       	cpi	r18, 0x08	; 8
-    74be:	90 f3       	brcs	.-28     	; 0x74a4 <usMBCRC16+0x1a>
-    74c0:	4f 5f       	subi	r20, 0xFF	; 255
-    74c2:	5f 4f       	sbci	r21, 0xFF	; 255
-    74c4:	46 17       	cp	r20, r22
-    74c6:	57 07       	cpc	r21, r23
-    74c8:	30 f3       	brcs	.-52     	; 0x7496 <usMBCRC16+0xc>
-    74ca:	08 95       	ret
+00007432 <usMBCRC16>:
+    7432:	dc 01       	movw	r26, r24
+    7434:	40 e0       	ldi	r20, 0x00	; 0
+    7436:	50 e0       	ldi	r21, 0x00	; 0
+    7438:	8f ef       	ldi	r24, 0xFF	; 255
+    743a:	9f ef       	ldi	r25, 0xFF	; 255
+    743c:	17 c0       	rjmp	.+46     	; 0x746c <usMBCRC16+0x3a>
+    743e:	fd 01       	movw	r30, r26
+    7440:	e4 0f       	add	r30, r20
+    7442:	f5 1f       	adc	r31, r21
+    7444:	20 81       	ld	r18, Z
+    7446:	82 27       	eor	r24, r18
+    7448:	20 e0       	ldi	r18, 0x00	; 0
+    744a:	0c c0       	rjmp	.+24     	; 0x7464 <usMBCRC16+0x32>
+    744c:	80 ff       	sbrs	r24, 0
+    744e:	07 c0       	rjmp	.+14     	; 0x745e <usMBCRC16+0x2c>
+    7450:	96 95       	lsr	r25
+    7452:	87 95       	ror	r24
+    7454:	31 e0       	ldi	r19, 0x01	; 1
+    7456:	83 27       	eor	r24, r19
+    7458:	30 ea       	ldi	r19, 0xA0	; 160
+    745a:	93 27       	eor	r25, r19
+    745c:	02 c0       	rjmp	.+4      	; 0x7462 <usMBCRC16+0x30>
+    745e:	96 95       	lsr	r25
+    7460:	87 95       	ror	r24
+    7462:	2f 5f       	subi	r18, 0xFF	; 255
+    7464:	28 30       	cpi	r18, 0x08	; 8
+    7466:	90 f3       	brcs	.-28     	; 0x744c <usMBCRC16+0x1a>
+    7468:	4f 5f       	subi	r20, 0xFF	; 255
+    746a:	5f 4f       	sbci	r21, 0xFF	; 255
+    746c:	46 17       	cp	r20, r22
+    746e:	57 07       	cpc	r21, r23
+    7470:	30 f3       	brcs	.-52     	; 0x743e <usMBCRC16+0xc>
+    7472:	08 95       	ret
 
-000074cc <eMBFuncWriteMultipleHoldingRegister>:
-    74cc:	cf 93       	push	r28
-    74ce:	df 93       	push	r29
-    74d0:	eb 01       	movw	r28, r22
-    74d2:	21 e0       	ldi	r18, 0x01	; 1
-    74d4:	41 e4       	ldi	r20, 0x41	; 65
-    74d6:	50 e0       	ldi	r21, 0x00	; 0
-    74d8:	65 e0       	ldi	r22, 0x05	; 5
-    74da:	70 e0       	ldi	r23, 0x00	; 0
-    74dc:	06 96       	adiw	r24, 0x06	; 6
-    74de:	0e 94 ca 39 	call	0x7394	; 0x7394 <eMBRegHoldingCB>
-    74e2:	81 11       	cpse	r24, r1
-    74e4:	04 c0       	rjmp	.+8      	; 0x74ee <eMBFuncWriteMultipleHoldingRegister+0x22>
-    74e6:	85 e0       	ldi	r24, 0x05	; 5
-    74e8:	90 e0       	ldi	r25, 0x00	; 0
-    74ea:	99 83       	std	Y+1, r25	; 0x01
-    74ec:	88 83       	st	Y, r24
-    74ee:	80 e0       	ldi	r24, 0x00	; 0
-    74f0:	df 91       	pop	r29
-    74f2:	cf 91       	pop	r28
-    74f4:	08 95       	ret
+00007474 <eMBFuncWriteMultipleHoldingRegister>:
+    7474:	cf 93       	push	r28
+    7476:	df 93       	push	r29
+    7478:	eb 01       	movw	r28, r22
+    747a:	21 e0       	ldi	r18, 0x01	; 1
+    747c:	41 e4       	ldi	r20, 0x41	; 65
+    747e:	50 e0       	ldi	r21, 0x00	; 0
+    7480:	65 e0       	ldi	r22, 0x05	; 5
+    7482:	70 e0       	ldi	r23, 0x00	; 0
+    7484:	06 96       	adiw	r24, 0x06	; 6
+    7486:	0e 94 9e 39 	call	0x733c	; 0x733c <eMBRegHoldingCB>
+    748a:	81 11       	cpse	r24, r1
+    748c:	04 c0       	rjmp	.+8      	; 0x7496 <eMBFuncWriteMultipleHoldingRegister+0x22>
+    748e:	85 e0       	ldi	r24, 0x05	; 5
+    7490:	90 e0       	ldi	r25, 0x00	; 0
+    7492:	99 83       	std	Y+1, r25	; 0x01
+    7494:	88 83       	st	Y, r24
+    7496:	80 e0       	ldi	r24, 0x00	; 0
+    7498:	df 91       	pop	r29
+    749a:	cf 91       	pop	r28
+    749c:	08 95       	ret
 
-000074f6 <eMBFuncReadHoldingRegister>:
-    74f6:	cf 93       	push	r28
-    74f8:	df 93       	push	r29
-    74fa:	eb 01       	movw	r28, r22
-    74fc:	23 e0       	ldi	r18, 0x03	; 3
-    74fe:	fc 01       	movw	r30, r24
-    7500:	20 83       	st	Z, r18
-    7502:	28 e0       	ldi	r18, 0x08	; 8
-    7504:	21 83       	std	Z+1, r18	; 0x01
-    7506:	20 e0       	ldi	r18, 0x00	; 0
-    7508:	44 e0       	ldi	r20, 0x04	; 4
-    750a:	50 e0       	ldi	r21, 0x00	; 0
-    750c:	61 e0       	ldi	r22, 0x01	; 1
-    750e:	70 e0       	ldi	r23, 0x00	; 0
-    7510:	02 96       	adiw	r24, 0x02	; 2
-    7512:	0e 94 ca 39 	call	0x7394	; 0x7394 <eMBRegHoldingCB>
-    7516:	8a e0       	ldi	r24, 0x0A	; 10
-    7518:	90 e0       	ldi	r25, 0x00	; 0
-    751a:	99 83       	std	Y+1, r25	; 0x01
-    751c:	88 83       	st	Y, r24
-    751e:	80 e0       	ldi	r24, 0x00	; 0
-    7520:	df 91       	pop	r29
-    7522:	cf 91       	pop	r28
-    7524:	08 95       	ret
+0000749e <eMBFuncReadHoldingRegister>:
+    749e:	cf 93       	push	r28
+    74a0:	df 93       	push	r29
+    74a2:	eb 01       	movw	r28, r22
+    74a4:	23 e0       	ldi	r18, 0x03	; 3
+    74a6:	fc 01       	movw	r30, r24
+    74a8:	20 83       	st	Z, r18
+    74aa:	28 e0       	ldi	r18, 0x08	; 8
+    74ac:	21 83       	std	Z+1, r18	; 0x01
+    74ae:	20 e0       	ldi	r18, 0x00	; 0
+    74b0:	44 e0       	ldi	r20, 0x04	; 4
+    74b2:	50 e0       	ldi	r21, 0x00	; 0
+    74b4:	61 e0       	ldi	r22, 0x01	; 1
+    74b6:	70 e0       	ldi	r23, 0x00	; 0
+    74b8:	02 96       	adiw	r24, 0x02	; 2
+    74ba:	0e 94 9e 39 	call	0x733c	; 0x733c <eMBRegHoldingCB>
+    74be:	8a e0       	ldi	r24, 0x0A	; 10
+    74c0:	90 e0       	ldi	r25, 0x00	; 0
+    74c2:	99 83       	std	Y+1, r25	; 0x01
+    74c4:	88 83       	st	Y, r24
+    74c6:	80 e0       	ldi	r24, 0x00	; 0
+    74c8:	df 91       	pop	r29
+    74ca:	cf 91       	pop	r28
+    74cc:	08 95       	ret
 
-00007526 <eMBRTUReceive>:
-    7526:	ef 92       	push	r14
-    7528:	ff 92       	push	r15
-    752a:	0f 93       	push	r16
-    752c:	1f 93       	push	r17
-    752e:	cf 93       	push	r28
-    7530:	df 93       	push	r29
-    7532:	f8 94       	cli
-    7534:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
-    7538:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    753c:	24 30       	cpi	r18, 0x04	; 4
-    753e:	31 05       	cpc	r19, r1
-    7540:	f8 f0       	brcs	.+62     	; 0x7580 <eMBRTUReceive+0x5a>
-    7542:	7a 01       	movw	r14, r20
-    7544:	8b 01       	movw	r16, r22
-    7546:	ec 01       	movw	r28, r24
-    7548:	60 91 16 02 	lds	r22, 0x0216	; 0x800216 <usRcvBufferPos>
-    754c:	70 91 17 02 	lds	r23, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    7550:	80 e2       	ldi	r24, 0x20	; 32
-    7552:	92 e0       	ldi	r25, 0x02	; 2
-    7554:	0e 94 45 3a 	call	0x748a	; 0x748a <usMBCRC16>
-    7558:	89 2b       	or	r24, r25
-    755a:	a1 f4       	brne	.+40     	; 0x7584 <eMBRTUReceive+0x5e>
-    755c:	80 91 20 02 	lds	r24, 0x0220	; 0x800220 <ucRTUBuf>
-    7560:	88 83       	st	Y, r24
-    7562:	80 91 16 02 	lds	r24, 0x0216	; 0x800216 <usRcvBufferPos>
-    7566:	90 91 17 02 	lds	r25, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    756a:	03 97       	sbiw	r24, 0x03	; 3
-    756c:	f7 01       	movw	r30, r14
-    756e:	91 83       	std	Z+1, r25	; 0x01
-    7570:	80 83       	st	Z, r24
-    7572:	81 e2       	ldi	r24, 0x21	; 33
-    7574:	92 e0       	ldi	r25, 0x02	; 2
-    7576:	f8 01       	movw	r30, r16
-    7578:	91 83       	std	Z+1, r25	; 0x01
-    757a:	80 83       	st	Z, r24
-    757c:	80 e0       	ldi	r24, 0x00	; 0
-    757e:	03 c0       	rjmp	.+6      	; 0x7586 <eMBRTUReceive+0x60>
-    7580:	85 e0       	ldi	r24, 0x05	; 5
-    7582:	01 c0       	rjmp	.+2      	; 0x7586 <eMBRTUReceive+0x60>
-    7584:	85 e0       	ldi	r24, 0x05	; 5
-    7586:	78 94       	sei
-    7588:	df 91       	pop	r29
-    758a:	cf 91       	pop	r28
-    758c:	1f 91       	pop	r17
-    758e:	0f 91       	pop	r16
-    7590:	ff 90       	pop	r15
-    7592:	ef 90       	pop	r14
-    7594:	08 95       	ret
+000074ce <eMBRTUReceive>:
+    74ce:	ef 92       	push	r14
+    74d0:	ff 92       	push	r15
+    74d2:	0f 93       	push	r16
+    74d4:	1f 93       	push	r17
+    74d6:	cf 93       	push	r28
+    74d8:	df 93       	push	r29
+    74da:	f8 94       	cli
+    74dc:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
+    74e0:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    74e4:	24 30       	cpi	r18, 0x04	; 4
+    74e6:	31 05       	cpc	r19, r1
+    74e8:	f8 f0       	brcs	.+62     	; 0x7528 <eMBRTUReceive+0x5a>
+    74ea:	7a 01       	movw	r14, r20
+    74ec:	8b 01       	movw	r16, r22
+    74ee:	ec 01       	movw	r28, r24
+    74f0:	60 91 16 02 	lds	r22, 0x0216	; 0x800216 <usRcvBufferPos>
+    74f4:	70 91 17 02 	lds	r23, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    74f8:	80 e2       	ldi	r24, 0x20	; 32
+    74fa:	92 e0       	ldi	r25, 0x02	; 2
+    74fc:	0e 94 19 3a 	call	0x7432	; 0x7432 <usMBCRC16>
+    7500:	89 2b       	or	r24, r25
+    7502:	a1 f4       	brne	.+40     	; 0x752c <eMBRTUReceive+0x5e>
+    7504:	80 91 20 02 	lds	r24, 0x0220	; 0x800220 <ucRTUBuf>
+    7508:	88 83       	st	Y, r24
+    750a:	80 91 16 02 	lds	r24, 0x0216	; 0x800216 <usRcvBufferPos>
+    750e:	90 91 17 02 	lds	r25, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    7512:	03 97       	sbiw	r24, 0x03	; 3
+    7514:	f7 01       	movw	r30, r14
+    7516:	91 83       	std	Z+1, r25	; 0x01
+    7518:	80 83       	st	Z, r24
+    751a:	81 e2       	ldi	r24, 0x21	; 33
+    751c:	92 e0       	ldi	r25, 0x02	; 2
+    751e:	f8 01       	movw	r30, r16
+    7520:	91 83       	std	Z+1, r25	; 0x01
+    7522:	80 83       	st	Z, r24
+    7524:	80 e0       	ldi	r24, 0x00	; 0
+    7526:	03 c0       	rjmp	.+6      	; 0x752e <eMBRTUReceive+0x60>
+    7528:	85 e0       	ldi	r24, 0x05	; 5
+    752a:	01 c0       	rjmp	.+2      	; 0x752e <eMBRTUReceive+0x60>
+    752c:	85 e0       	ldi	r24, 0x05	; 5
+    752e:	78 94       	sei
+    7530:	df 91       	pop	r29
+    7532:	cf 91       	pop	r28
+    7534:	1f 91       	pop	r17
+    7536:	0f 91       	pop	r16
+    7538:	ff 90       	pop	r15
+    753a:	ef 90       	pop	r14
+    753c:	08 95       	ret
 
-00007596 <eMBRTUSend>:
-    7596:	f8 94       	cli
-    7598:	90 91 1c 02 	lds	r25, 0x021C	; 0x80021c <eRcvState>
-    759c:	91 30       	cpi	r25, 0x01	; 1
-    759e:	09 f0       	breq	.+2      	; 0x75a2 <eMBRTUSend+0xc>
-    75a0:	45 c0       	rjmp	.+138    	; 0x762c <eMBRTUSend+0x96>
-    75a2:	28 2f       	mov	r18, r24
-    75a4:	cb 01       	movw	r24, r22
-    75a6:	01 97       	sbiw	r24, 0x01	; 1
-    75a8:	90 93 1b 02 	sts	0x021B, r25	; 0x80021b <pucSndBufferCur+0x1>
-    75ac:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <pucSndBufferCur>
-    75b0:	61 e0       	ldi	r22, 0x01	; 1
-    75b2:	70 e0       	ldi	r23, 0x00	; 0
-    75b4:	70 93 19 02 	sts	0x0219, r23	; 0x800219 <usSndBufferCount+0x1>
-    75b8:	60 93 18 02 	sts	0x0218, r22	; 0x800218 <usSndBufferCount>
-    75bc:	fc 01       	movw	r30, r24
-    75be:	20 83       	st	Z, r18
-    75c0:	20 91 18 02 	lds	r18, 0x0218	; 0x800218 <usSndBufferCount>
-    75c4:	30 91 19 02 	lds	r19, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    75c8:	42 0f       	add	r20, r18
-    75ca:	53 1f       	adc	r21, r19
-    75cc:	50 93 19 02 	sts	0x0219, r21	; 0x800219 <usSndBufferCount+0x1>
-    75d0:	40 93 18 02 	sts	0x0218, r20	; 0x800218 <usSndBufferCount>
-    75d4:	60 91 18 02 	lds	r22, 0x0218	; 0x800218 <usSndBufferCount>
-    75d8:	70 91 19 02 	lds	r23, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    75dc:	0e 94 45 3a 	call	0x748a	; 0x748a <usMBCRC16>
-    75e0:	49 2f       	mov	r20, r25
-    75e2:	20 91 18 02 	lds	r18, 0x0218	; 0x800218 <usSndBufferCount>
-    75e6:	30 91 19 02 	lds	r19, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    75ea:	b9 01       	movw	r22, r18
-    75ec:	6f 5f       	subi	r22, 0xFF	; 255
-    75ee:	7f 4f       	sbci	r23, 0xFF	; 255
-    75f0:	70 93 19 02 	sts	0x0219, r23	; 0x800219 <usSndBufferCount+0x1>
-    75f4:	60 93 18 02 	sts	0x0218, r22	; 0x800218 <usSndBufferCount>
-    75f8:	f9 01       	movw	r30, r18
-    75fa:	e0 5e       	subi	r30, 0xE0	; 224
-    75fc:	fd 4f       	sbci	r31, 0xFD	; 253
-    75fe:	80 83       	st	Z, r24
-    7600:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
-    7604:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    7608:	9c 01       	movw	r18, r24
-    760a:	2f 5f       	subi	r18, 0xFF	; 255
-    760c:	3f 4f       	sbci	r19, 0xFF	; 255
-    760e:	30 93 19 02 	sts	0x0219, r19	; 0x800219 <usSndBufferCount+0x1>
-    7612:	20 93 18 02 	sts	0x0218, r18	; 0x800218 <usSndBufferCount>
-    7616:	fc 01       	movw	r30, r24
-    7618:	e0 5e       	subi	r30, 0xE0	; 224
-    761a:	fd 4f       	sbci	r31, 0xFD	; 253
-    761c:	40 83       	st	Z, r20
-    761e:	81 e0       	ldi	r24, 0x01	; 1
-    7620:	80 93 1d 02 	sts	0x021D, r24	; 0x80021d <eSndState>
-    7624:	61 e0       	ldi	r22, 0x01	; 1
-    7626:	80 e0       	ldi	r24, 0x00	; 0
-    7628:	0e 94 cb 3b 	call	0x7796	; 0x7796 <vMBPortSerialEnable>
-    762c:	78 94       	sei
-    762e:	80 e0       	ldi	r24, 0x00	; 0
-    7630:	08 95       	ret
+0000753e <eMBRTUSend>:
+    753e:	f8 94       	cli
+    7540:	90 91 1c 02 	lds	r25, 0x021C	; 0x80021c <eRcvState>
+    7544:	91 30       	cpi	r25, 0x01	; 1
+    7546:	09 f0       	breq	.+2      	; 0x754a <eMBRTUSend+0xc>
+    7548:	45 c0       	rjmp	.+138    	; 0x75d4 <eMBRTUSend+0x96>
+    754a:	28 2f       	mov	r18, r24
+    754c:	cb 01       	movw	r24, r22
+    754e:	01 97       	sbiw	r24, 0x01	; 1
+    7550:	90 93 1b 02 	sts	0x021B, r25	; 0x80021b <pucSndBufferCur+0x1>
+    7554:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <pucSndBufferCur>
+    7558:	61 e0       	ldi	r22, 0x01	; 1
+    755a:	70 e0       	ldi	r23, 0x00	; 0
+    755c:	70 93 19 02 	sts	0x0219, r23	; 0x800219 <usSndBufferCount+0x1>
+    7560:	60 93 18 02 	sts	0x0218, r22	; 0x800218 <usSndBufferCount>
+    7564:	fc 01       	movw	r30, r24
+    7566:	20 83       	st	Z, r18
+    7568:	20 91 18 02 	lds	r18, 0x0218	; 0x800218 <usSndBufferCount>
+    756c:	30 91 19 02 	lds	r19, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    7570:	42 0f       	add	r20, r18
+    7572:	53 1f       	adc	r21, r19
+    7574:	50 93 19 02 	sts	0x0219, r21	; 0x800219 <usSndBufferCount+0x1>
+    7578:	40 93 18 02 	sts	0x0218, r20	; 0x800218 <usSndBufferCount>
+    757c:	60 91 18 02 	lds	r22, 0x0218	; 0x800218 <usSndBufferCount>
+    7580:	70 91 19 02 	lds	r23, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    7584:	0e 94 19 3a 	call	0x7432	; 0x7432 <usMBCRC16>
+    7588:	49 2f       	mov	r20, r25
+    758a:	20 91 18 02 	lds	r18, 0x0218	; 0x800218 <usSndBufferCount>
+    758e:	30 91 19 02 	lds	r19, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    7592:	b9 01       	movw	r22, r18
+    7594:	6f 5f       	subi	r22, 0xFF	; 255
+    7596:	7f 4f       	sbci	r23, 0xFF	; 255
+    7598:	70 93 19 02 	sts	0x0219, r23	; 0x800219 <usSndBufferCount+0x1>
+    759c:	60 93 18 02 	sts	0x0218, r22	; 0x800218 <usSndBufferCount>
+    75a0:	f9 01       	movw	r30, r18
+    75a2:	e0 5e       	subi	r30, 0xE0	; 224
+    75a4:	fd 4f       	sbci	r31, 0xFD	; 253
+    75a6:	80 83       	st	Z, r24
+    75a8:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
+    75ac:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    75b0:	9c 01       	movw	r18, r24
+    75b2:	2f 5f       	subi	r18, 0xFF	; 255
+    75b4:	3f 4f       	sbci	r19, 0xFF	; 255
+    75b6:	30 93 19 02 	sts	0x0219, r19	; 0x800219 <usSndBufferCount+0x1>
+    75ba:	20 93 18 02 	sts	0x0218, r18	; 0x800218 <usSndBufferCount>
+    75be:	fc 01       	movw	r30, r24
+    75c0:	e0 5e       	subi	r30, 0xE0	; 224
+    75c2:	fd 4f       	sbci	r31, 0xFD	; 253
+    75c4:	40 83       	st	Z, r20
+    75c6:	81 e0       	ldi	r24, 0x01	; 1
+    75c8:	80 93 1d 02 	sts	0x021D, r24	; 0x80021d <eSndState>
+    75cc:	61 e0       	ldi	r22, 0x01	; 1
+    75ce:	80 e0       	ldi	r24, 0x00	; 0
+    75d0:	0e 94 9f 3b 	call	0x773e	; 0x773e <vMBPortSerialEnable>
+    75d4:	78 94       	sei
+    75d6:	80 e0       	ldi	r24, 0x00	; 0
+    75d8:	08 95       	ret
 
-00007632 <xMBRTUReceiveFSM>:
-    7632:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
-    7636:	80 91 1c 02 	lds	r24, 0x021C	; 0x80021c <eRcvState>
-    763a:	81 30       	cpi	r24, 0x01	; 1
-    763c:	61 f0       	breq	.+24     	; 0x7656 <xMBRTUReceiveFSM+0x24>
-    763e:	28 f0       	brcs	.+10     	; 0x764a <xMBRTUReceiveFSM+0x18>
-    7640:	82 30       	cpi	r24, 0x02	; 2
-    7642:	11 f1       	breq	.+68     	; 0x7688 <xMBRTUReceiveFSM+0x56>
-    7644:	83 30       	cpi	r24, 0x03	; 3
-    7646:	21 f0       	breq	.+8      	; 0x7650 <xMBRTUReceiveFSM+0x1e>
-    7648:	08 95       	ret
-    764a:	0e 94 ec 3b 	call	0x77d8	; 0x77d8 <vMBPortTimersEnable>
-    764e:	08 95       	ret
-    7650:	0e 94 ec 3b 	call	0x77d8	; 0x77d8 <vMBPortTimersEnable>
-    7654:	08 95       	ret
-    7656:	10 92 17 02 	sts	0x0217, r1	; 0x800217 <usRcvBufferPos+0x1>
-    765a:	10 92 16 02 	sts	0x0216, r1	; 0x800216 <usRcvBufferPos>
-    765e:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
-    7662:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    7666:	a9 01       	movw	r20, r18
-    7668:	4f 5f       	subi	r20, 0xFF	; 255
-    766a:	5f 4f       	sbci	r21, 0xFF	; 255
-    766c:	50 93 17 02 	sts	0x0217, r21	; 0x800217 <usRcvBufferPos+0x1>
-    7670:	40 93 16 02 	sts	0x0216, r20	; 0x800216 <usRcvBufferPos>
-    7674:	f9 01       	movw	r30, r18
-    7676:	e0 5e       	subi	r30, 0xE0	; 224
-    7678:	fd 4f       	sbci	r31, 0xFD	; 253
-    767a:	90 83       	st	Z, r25
-    767c:	82 e0       	ldi	r24, 0x02	; 2
-    767e:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
-    7682:	0e 94 ec 3b 	call	0x77d8	; 0x77d8 <vMBPortTimersEnable>
-    7686:	08 95       	ret
-    7688:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
-    768c:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    7690:	2f 3f       	cpi	r18, 0xFF	; 255
-    7692:	31 05       	cpc	r19, r1
-    7694:	09 f0       	breq	.+2      	; 0x7698 <xMBRTUReceiveFSM+0x66>
-    7696:	80 f4       	brcc	.+32     	; 0x76b8 <xMBRTUReceiveFSM+0x86>
-    7698:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
-    769c:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
-    76a0:	a9 01       	movw	r20, r18
-    76a2:	4f 5f       	subi	r20, 0xFF	; 255
-    76a4:	5f 4f       	sbci	r21, 0xFF	; 255
-    76a6:	50 93 17 02 	sts	0x0217, r21	; 0x800217 <usRcvBufferPos+0x1>
-    76aa:	40 93 16 02 	sts	0x0216, r20	; 0x800216 <usRcvBufferPos>
-    76ae:	f9 01       	movw	r30, r18
-    76b0:	e0 5e       	subi	r30, 0xE0	; 224
-    76b2:	fd 4f       	sbci	r31, 0xFD	; 253
-    76b4:	90 83       	st	Z, r25
-    76b6:	03 c0       	rjmp	.+6      	; 0x76be <xMBRTUReceiveFSM+0x8c>
-    76b8:	83 e0       	ldi	r24, 0x03	; 3
-    76ba:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
-    76be:	0e 94 ec 3b 	call	0x77d8	; 0x77d8 <vMBPortTimersEnable>
+000075da <xMBRTUReceiveFSM>:
+    75da:	90 91 c6 00 	lds	r25, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+    75de:	80 91 1c 02 	lds	r24, 0x021C	; 0x80021c <eRcvState>
+    75e2:	81 30       	cpi	r24, 0x01	; 1
+    75e4:	61 f0       	breq	.+24     	; 0x75fe <xMBRTUReceiveFSM+0x24>
+    75e6:	28 f0       	brcs	.+10     	; 0x75f2 <xMBRTUReceiveFSM+0x18>
+    75e8:	82 30       	cpi	r24, 0x02	; 2
+    75ea:	11 f1       	breq	.+68     	; 0x7630 <xMBRTUReceiveFSM+0x56>
+    75ec:	83 30       	cpi	r24, 0x03	; 3
+    75ee:	21 f0       	breq	.+8      	; 0x75f8 <xMBRTUReceiveFSM+0x1e>
+    75f0:	08 95       	ret
+    75f2:	0e 94 c0 3b 	call	0x7780	; 0x7780 <vMBPortTimersEnable>
+    75f6:	08 95       	ret
+    75f8:	0e 94 c0 3b 	call	0x7780	; 0x7780 <vMBPortTimersEnable>
+    75fc:	08 95       	ret
+    75fe:	10 92 17 02 	sts	0x0217, r1	; 0x800217 <usRcvBufferPos+0x1>
+    7602:	10 92 16 02 	sts	0x0216, r1	; 0x800216 <usRcvBufferPos>
+    7606:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
+    760a:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    760e:	a9 01       	movw	r20, r18
+    7610:	4f 5f       	subi	r20, 0xFF	; 255
+    7612:	5f 4f       	sbci	r21, 0xFF	; 255
+    7614:	50 93 17 02 	sts	0x0217, r21	; 0x800217 <usRcvBufferPos+0x1>
+    7618:	40 93 16 02 	sts	0x0216, r20	; 0x800216 <usRcvBufferPos>
+    761c:	f9 01       	movw	r30, r18
+    761e:	e0 5e       	subi	r30, 0xE0	; 224
+    7620:	fd 4f       	sbci	r31, 0xFD	; 253
+    7622:	90 83       	st	Z, r25
+    7624:	82 e0       	ldi	r24, 0x02	; 2
+    7626:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
+    762a:	0e 94 c0 3b 	call	0x7780	; 0x7780 <vMBPortTimersEnable>
+    762e:	08 95       	ret
+    7630:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
+    7634:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    7638:	2f 3f       	cpi	r18, 0xFF	; 255
+    763a:	31 05       	cpc	r19, r1
+    763c:	09 f0       	breq	.+2      	; 0x7640 <xMBRTUReceiveFSM+0x66>
+    763e:	80 f4       	brcc	.+32     	; 0x7660 <xMBRTUReceiveFSM+0x86>
+    7640:	20 91 16 02 	lds	r18, 0x0216	; 0x800216 <usRcvBufferPos>
+    7644:	30 91 17 02 	lds	r19, 0x0217	; 0x800217 <usRcvBufferPos+0x1>
+    7648:	a9 01       	movw	r20, r18
+    764a:	4f 5f       	subi	r20, 0xFF	; 255
+    764c:	5f 4f       	sbci	r21, 0xFF	; 255
+    764e:	50 93 17 02 	sts	0x0217, r21	; 0x800217 <usRcvBufferPos+0x1>
+    7652:	40 93 16 02 	sts	0x0216, r20	; 0x800216 <usRcvBufferPos>
+    7656:	f9 01       	movw	r30, r18
+    7658:	e0 5e       	subi	r30, 0xE0	; 224
+    765a:	fd 4f       	sbci	r31, 0xFD	; 253
+    765c:	90 83       	st	Z, r25
+    765e:	03 c0       	rjmp	.+6      	; 0x7666 <xMBRTUReceiveFSM+0x8c>
+    7660:	83 e0       	ldi	r24, 0x03	; 3
+    7662:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
+    7666:	0e 94 c0 3b 	call	0x7780	; 0x7780 <vMBPortTimersEnable>
+    766a:	08 95       	ret
+
+0000766c <xMBRTUTransmitFSM>:
+    766c:	80 91 1d 02 	lds	r24, 0x021D	; 0x80021d <eSndState>
+    7670:	88 23       	and	r24, r24
+    7672:	19 f0       	breq	.+6      	; 0x767a <xMBRTUTransmitFSM+0xe>
+    7674:	81 30       	cpi	r24, 0x01	; 1
+    7676:	31 f0       	breq	.+12     	; 0x7684 <xMBRTUTransmitFSM+0x18>
+    7678:	08 95       	ret
+    767a:	60 e0       	ldi	r22, 0x00	; 0
+    767c:	81 e0       	ldi	r24, 0x01	; 1
+    767e:	0e 94 9f 3b 	call	0x773e	; 0x773e <vMBPortSerialEnable>
+    7682:	08 95       	ret
+    7684:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
+    7688:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    768c:	89 2b       	or	r24, r25
+    768e:	d1 f0       	breq	.+52     	; 0x76c4 <xMBRTUTransmitFSM+0x58>
+    7690:	e0 91 1a 02 	lds	r30, 0x021A	; 0x80021a <pucSndBufferCur>
+    7694:	f0 91 1b 02 	lds	r31, 0x021B	; 0x80021b <pucSndBufferCur+0x1>
+    7698:	80 81       	ld	r24, Z
+    769a:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+    769e:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <pucSndBufferCur>
+    76a2:	90 91 1b 02 	lds	r25, 0x021B	; 0x80021b <pucSndBufferCur+0x1>
+    76a6:	01 96       	adiw	r24, 0x01	; 1
+    76a8:	90 93 1b 02 	sts	0x021B, r25	; 0x80021b <pucSndBufferCur+0x1>
+    76ac:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <pucSndBufferCur>
+    76b0:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
+    76b4:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
+    76b8:	01 97       	sbiw	r24, 0x01	; 1
+    76ba:	90 93 19 02 	sts	0x0219, r25	; 0x800219 <usSndBufferCount+0x1>
+    76be:	80 93 18 02 	sts	0x0218, r24	; 0x800218 <usSndBufferCount>
     76c2:	08 95       	ret
+    76c4:	83 e0       	ldi	r24, 0x03	; 3
+    76c6:	0e 94 8b 3b 	call	0x7716	; 0x7716 <xMBPortEventPost>
+    76ca:	60 e0       	ldi	r22, 0x00	; 0
+    76cc:	81 e0       	ldi	r24, 0x01	; 1
+    76ce:	0e 94 9f 3b 	call	0x773e	; 0x773e <vMBPortSerialEnable>
+    76d2:	10 92 1d 02 	sts	0x021D, r1	; 0x80021d <eSndState>
+    76d6:	08 95       	ret
 
-000076c4 <xMBRTUTransmitFSM>:
-    76c4:	80 91 1d 02 	lds	r24, 0x021D	; 0x80021d <eSndState>
-    76c8:	88 23       	and	r24, r24
-    76ca:	19 f0       	breq	.+6      	; 0x76d2 <xMBRTUTransmitFSM+0xe>
-    76cc:	81 30       	cpi	r24, 0x01	; 1
-    76ce:	31 f0       	breq	.+12     	; 0x76dc <xMBRTUTransmitFSM+0x18>
-    76d0:	08 95       	ret
-    76d2:	60 e0       	ldi	r22, 0x00	; 0
-    76d4:	81 e0       	ldi	r24, 0x01	; 1
-    76d6:	0e 94 cb 3b 	call	0x7796	; 0x7796 <vMBPortSerialEnable>
-    76da:	08 95       	ret
-    76dc:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
-    76e0:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    76e4:	89 2b       	or	r24, r25
-    76e6:	d1 f0       	breq	.+52     	; 0x771c <xMBRTUTransmitFSM+0x58>
-    76e8:	e0 91 1a 02 	lds	r30, 0x021A	; 0x80021a <pucSndBufferCur>
-    76ec:	f0 91 1b 02 	lds	r31, 0x021B	; 0x80021b <pucSndBufferCur+0x1>
-    76f0:	80 81       	ld	r24, Z
-    76f2:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
-    76f6:	80 91 1a 02 	lds	r24, 0x021A	; 0x80021a <pucSndBufferCur>
-    76fa:	90 91 1b 02 	lds	r25, 0x021B	; 0x80021b <pucSndBufferCur+0x1>
-    76fe:	01 96       	adiw	r24, 0x01	; 1
-    7700:	90 93 1b 02 	sts	0x021B, r25	; 0x80021b <pucSndBufferCur+0x1>
-    7704:	80 93 1a 02 	sts	0x021A, r24	; 0x80021a <pucSndBufferCur>
-    7708:	80 91 18 02 	lds	r24, 0x0218	; 0x800218 <usSndBufferCount>
-    770c:	90 91 19 02 	lds	r25, 0x0219	; 0x800219 <usSndBufferCount+0x1>
-    7710:	01 97       	sbiw	r24, 0x01	; 1
-    7712:	90 93 19 02 	sts	0x0219, r25	; 0x800219 <usSndBufferCount+0x1>
-    7716:	80 93 18 02 	sts	0x0218, r24	; 0x800218 <usSndBufferCount>
-    771a:	08 95       	ret
-    771c:	83 e0       	ldi	r24, 0x03	; 3
-    771e:	0e 94 b7 3b 	call	0x776e	; 0x776e <xMBPortEventPost>
-    7722:	60 e0       	ldi	r22, 0x00	; 0
-    7724:	81 e0       	ldi	r24, 0x01	; 1
-    7726:	0e 94 cb 3b 	call	0x7796	; 0x7796 <vMBPortSerialEnable>
-    772a:	10 92 1d 02 	sts	0x021D, r1	; 0x80021d <eSndState>
-    772e:	08 95       	ret
+000076d8 <xMBRTUTimerT35Expired>:
+    76d8:	80 91 1c 02 	lds	r24, 0x021C	; 0x80021c <eRcvState>
+    76dc:	88 23       	and	r24, r24
+    76de:	19 f0       	breq	.+6      	; 0x76e6 <xMBRTUTimerT35Expired+0xe>
+    76e0:	82 30       	cpi	r24, 0x02	; 2
+    76e2:	29 f0       	breq	.+10     	; 0x76ee <xMBRTUTimerT35Expired+0x16>
+    76e4:	07 c0       	rjmp	.+14     	; 0x76f4 <xMBRTUTimerT35Expired+0x1c>
+    76e6:	80 e0       	ldi	r24, 0x00	; 0
+    76e8:	0e 94 8b 3b 	call	0x7716	; 0x7716 <xMBPortEventPost>
+    76ec:	03 c0       	rjmp	.+6      	; 0x76f4 <xMBRTUTimerT35Expired+0x1c>
+    76ee:	81 e0       	ldi	r24, 0x01	; 1
+    76f0:	0e 94 8b 3b 	call	0x7716	; 0x7716 <xMBPortEventPost>
+    76f4:	e1 e8       	ldi	r30, 0x81	; 129
+    76f6:	f0 e0       	ldi	r31, 0x00	; 0
+    76f8:	80 81       	ld	r24, Z
+    76fa:	8a 7f       	andi	r24, 0xFA	; 250
+    76fc:	80 83       	st	Z, r24
+    76fe:	ef e6       	ldi	r30, 0x6F	; 111
+    7700:	f0 e0       	ldi	r31, 0x00	; 0
+    7702:	80 81       	ld	r24, Z
+    7704:	8d 7f       	andi	r24, 0xFD	; 253
+    7706:	80 83       	st	Z, r24
+    7708:	86 b3       	in	r24, 0x16	; 22
+    770a:	82 60       	ori	r24, 0x02	; 2
+    770c:	86 bb       	out	0x16, r24	; 22
+    770e:	81 e0       	ldi	r24, 0x01	; 1
+    7710:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
+    7714:	08 95       	ret
 
-00007730 <xMBRTUTimerT35Expired>:
-    7730:	80 91 1c 02 	lds	r24, 0x021C	; 0x80021c <eRcvState>
-    7734:	88 23       	and	r24, r24
-    7736:	19 f0       	breq	.+6      	; 0x773e <xMBRTUTimerT35Expired+0xe>
-    7738:	82 30       	cpi	r24, 0x02	; 2
-    773a:	29 f0       	breq	.+10     	; 0x7746 <xMBRTUTimerT35Expired+0x16>
-    773c:	07 c0       	rjmp	.+14     	; 0x774c <xMBRTUTimerT35Expired+0x1c>
-    773e:	80 e0       	ldi	r24, 0x00	; 0
-    7740:	0e 94 b7 3b 	call	0x776e	; 0x776e <xMBPortEventPost>
-    7744:	03 c0       	rjmp	.+6      	; 0x774c <xMBRTUTimerT35Expired+0x1c>
-    7746:	81 e0       	ldi	r24, 0x01	; 1
-    7748:	0e 94 b7 3b 	call	0x776e	; 0x776e <xMBPortEventPost>
-    774c:	e1 e8       	ldi	r30, 0x81	; 129
-    774e:	f0 e0       	ldi	r31, 0x00	; 0
-    7750:	80 81       	ld	r24, Z
-    7752:	8a 7f       	andi	r24, 0xFA	; 250
-    7754:	80 83       	st	Z, r24
-    7756:	ef e6       	ldi	r30, 0x6F	; 111
-    7758:	f0 e0       	ldi	r31, 0x00	; 0
-    775a:	80 81       	ld	r24, Z
-    775c:	8d 7f       	andi	r24, 0xFD	; 253
-    775e:	80 83       	st	Z, r24
-    7760:	86 b3       	in	r24, 0x16	; 22
-    7762:	82 60       	ori	r24, 0x02	; 2
-    7764:	86 bb       	out	0x16, r24	; 22
-    7766:	81 e0       	ldi	r24, 0x01	; 1
-    7768:	80 93 1c 02 	sts	0x021C, r24	; 0x80021c <eRcvState>
-    776c:	08 95       	ret
+00007716 <xMBPortEventPost>:
+    7716:	91 e0       	ldi	r25, 0x01	; 1
+    7718:	90 93 1e 02 	sts	0x021E, r25	; 0x80021e <xEventInQueue>
+    771c:	80 93 1f 02 	sts	0x021F, r24	; 0x80021f <eQueuedEvent>
+    7720:	08 95       	ret
 
-0000776e <xMBPortEventPost>:
-    776e:	91 e0       	ldi	r25, 0x01	; 1
-    7770:	90 93 1e 02 	sts	0x021E, r25	; 0x80021e <xEventInQueue>
-    7774:	80 93 1f 02 	sts	0x021F, r24	; 0x80021f <eQueuedEvent>
-    7778:	08 95       	ret
+00007722 <xMBPortEventGet>:
+    7722:	fc 01       	movw	r30, r24
+    7724:	90 91 1e 02 	lds	r25, 0x021E	; 0x80021e <xEventInQueue>
+    7728:	99 23       	and	r25, r25
+    772a:	39 f0       	breq	.+14     	; 0x773a <xMBPortEventGet+0x18>
+    772c:	80 91 1f 02 	lds	r24, 0x021F	; 0x80021f <eQueuedEvent>
+    7730:	80 83       	st	Z, r24
+    7732:	10 92 1e 02 	sts	0x021E, r1	; 0x80021e <xEventInQueue>
+    7736:	81 e0       	ldi	r24, 0x01	; 1
+    7738:	08 95       	ret
+    773a:	80 e0       	ldi	r24, 0x00	; 0
+    773c:	08 95       	ret
 
-0000777a <xMBPortEventGet>:
-    777a:	fc 01       	movw	r30, r24
-    777c:	90 91 1e 02 	lds	r25, 0x021E	; 0x80021e <xEventInQueue>
-    7780:	99 23       	and	r25, r25
-    7782:	39 f0       	breq	.+14     	; 0x7792 <xMBPortEventGet+0x18>
-    7784:	80 91 1f 02 	lds	r24, 0x021F	; 0x80021f <eQueuedEvent>
-    7788:	80 83       	st	Z, r24
-    778a:	10 92 1e 02 	sts	0x021E, r1	; 0x80021e <xEventInQueue>
-    778e:	81 e0       	ldi	r24, 0x01	; 1
-    7790:	08 95       	ret
-    7792:	80 e0       	ldi	r24, 0x00	; 0
-    7794:	08 95       	ret
+0000773e <vMBPortSerialEnable>:
+    773e:	e1 ec       	ldi	r30, 0xC1	; 193
+    7740:	f0 e0       	ldi	r31, 0x00	; 0
+    7742:	90 81       	ld	r25, Z
+    7744:	98 64       	ori	r25, 0x48	; 72
+    7746:	90 83       	st	Z, r25
+    7748:	88 23       	and	r24, r24
+    774a:	21 f0       	breq	.+8      	; 0x7754 <vMBPortSerialEnable+0x16>
+    774c:	80 81       	ld	r24, Z
+    774e:	80 69       	ori	r24, 0x90	; 144
+    7750:	80 83       	st	Z, r24
+    7752:	05 c0       	rjmp	.+10     	; 0x775e <vMBPortSerialEnable+0x20>
+    7754:	e1 ec       	ldi	r30, 0xC1	; 193
+    7756:	f0 e0       	ldi	r31, 0x00	; 0
+    7758:	80 81       	ld	r24, Z
+    775a:	8f 76       	andi	r24, 0x6F	; 111
+    775c:	80 83       	st	Z, r24
+    775e:	66 23       	and	r22, r22
+    7760:	49 f0       	breq	.+18     	; 0x7774 <vMBPortSerialEnable+0x36>
+    7762:	e1 ec       	ldi	r30, 0xC1	; 193
+    7764:	f0 e0       	ldi	r31, 0x00	; 0
+    7766:	80 81       	ld	r24, Z
+    7768:	88 62       	ori	r24, 0x28	; 40
+    776a:	80 83       	st	Z, r24
+    776c:	88 b1       	in	r24, 0x08	; 8
+    776e:	88 60       	ori	r24, 0x08	; 8
+    7770:	88 b9       	out	0x08, r24	; 8
+    7772:	08 95       	ret
+    7774:	e1 ec       	ldi	r30, 0xC1	; 193
+    7776:	f0 e0       	ldi	r31, 0x00	; 0
+    7778:	80 81       	ld	r24, Z
+    777a:	8f 7d       	andi	r24, 0xDF	; 223
+    777c:	80 83       	st	Z, r24
+    777e:	08 95       	ret
 
-00007796 <vMBPortSerialEnable>:
-    7796:	e1 ec       	ldi	r30, 0xC1	; 193
-    7798:	f0 e0       	ldi	r31, 0x00	; 0
-    779a:	90 81       	ld	r25, Z
-    779c:	98 64       	ori	r25, 0x48	; 72
-    779e:	90 83       	st	Z, r25
-    77a0:	88 23       	and	r24, r24
-    77a2:	21 f0       	breq	.+8      	; 0x77ac <vMBPortSerialEnable+0x16>
-    77a4:	80 81       	ld	r24, Z
-    77a6:	80 69       	ori	r24, 0x90	; 144
-    77a8:	80 83       	st	Z, r24
-    77aa:	05 c0       	rjmp	.+10     	; 0x77b6 <vMBPortSerialEnable+0x20>
-    77ac:	e1 ec       	ldi	r30, 0xC1	; 193
-    77ae:	f0 e0       	ldi	r31, 0x00	; 0
-    77b0:	80 81       	ld	r24, Z
-    77b2:	8f 76       	andi	r24, 0x6F	; 111
-    77b4:	80 83       	st	Z, r24
-    77b6:	66 23       	and	r22, r22
-    77b8:	49 f0       	breq	.+18     	; 0x77cc <vMBPortSerialEnable+0x36>
-    77ba:	e1 ec       	ldi	r30, 0xC1	; 193
-    77bc:	f0 e0       	ldi	r31, 0x00	; 0
-    77be:	80 81       	ld	r24, Z
-    77c0:	88 62       	ori	r24, 0x28	; 40
-    77c2:	80 83       	st	Z, r24
-    77c4:	88 b1       	in	r24, 0x08	; 8
-    77c6:	88 60       	ori	r24, 0x08	; 8
-    77c8:	88 b9       	out	0x08, r24	; 8
-    77ca:	08 95       	ret
-    77cc:	e1 ec       	ldi	r30, 0xC1	; 193
-    77ce:	f0 e0       	ldi	r31, 0x00	; 0
-    77d0:	80 81       	ld	r24, Z
-    77d2:	8f 7d       	andi	r24, 0xDF	; 223
-    77d4:	80 83       	st	Z, r24
-    77d6:	08 95       	ret
+00007780 <vMBPortTimersEnable>:
+    7780:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7f8085>
+    7784:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7f8084>
+    7788:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <usTimerOCRADelta>
+    778c:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <usTimerOCRADelta+0x1>
+    7790:	89 2b       	or	r24, r25
+    7792:	69 f0       	breq	.+26     	; 0x77ae <vMBPortTimersEnable+0x2e>
+    7794:	ef e6       	ldi	r30, 0x6F	; 111
+    7796:	f0 e0       	ldi	r31, 0x00	; 0
+    7798:	80 81       	ld	r24, Z
+    779a:	82 60       	ori	r24, 0x02	; 2
+    779c:	80 83       	st	Z, r24
+    779e:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <usTimerOCRADelta>
+    77a2:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <usTimerOCRADelta+0x1>
+    77a6:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+    77aa:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+    77ae:	e1 e8       	ldi	r30, 0x81	; 129
+    77b0:	f0 e0       	ldi	r31, 0x00	; 0
+    77b2:	80 81       	ld	r24, Z
+    77b4:	85 60       	ori	r24, 0x05	; 5
+    77b6:	80 83       	st	Z, r24
+    77b8:	08 95       	ret
 
-000077d8 <vMBPortTimersEnable>:
-    77d8:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7f8085>
-    77dc:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7f8084>
-    77e0:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <usTimerOCRADelta>
-    77e4:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <usTimerOCRADelta+0x1>
-    77e8:	89 2b       	or	r24, r25
-    77ea:	69 f0       	breq	.+26     	; 0x7806 <vMBPortTimersEnable+0x2e>
-    77ec:	ef e6       	ldi	r30, 0x6F	; 111
-    77ee:	f0 e0       	ldi	r31, 0x00	; 0
-    77f0:	80 81       	ld	r24, Z
-    77f2:	82 60       	ori	r24, 0x02	; 2
-    77f4:	80 83       	st	Z, r24
-    77f6:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <usTimerOCRADelta>
-    77fa:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <usTimerOCRADelta+0x1>
-    77fe:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
-    7802:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
-    7806:	e1 e8       	ldi	r30, 0x81	; 129
-    7808:	f0 e0       	ldi	r31, 0x00	; 0
-    780a:	80 81       	ld	r24, Z
-    780c:	85 60       	ori	r24, 0x05	; 5
-    780e:	80 83       	st	Z, r24
-    7810:	08 95       	ret
+000077ba <_exit>:
+    77ba:	f8 94       	cli
 
-00007812 <_exit>:
-    7812:	f8 94       	cli
-
-00007814 <__stop_program>:
-    7814:	ff cf       	rjmp	.-2      	; 0x7814 <__stop_program>
+000077bc <__stop_program>:
+    77bc:	ff cf       	rjmp	.-2      	; 0x77bc <__stop_program>
